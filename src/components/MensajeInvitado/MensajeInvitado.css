@@ -1,0 +1,7 @@
+.mensaje_invitado {
+    background-color: var(--secondary-color);
+}
+
+.mensaje_invitado_title, .mensaje_invitado_subtitle {
+    color: var(--tertiary-color);
+}

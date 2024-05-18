@@ -1,0 +1,10 @@
+.fiesta_title {
+    color: var(--secondary-color);
+}
+.fiesta_subtitle {
+    color: var(--primary-color);
+}
+
+.fiesta_section_btn {
+    margin-top: 2rem;
+}

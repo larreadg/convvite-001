@@ -1,0 +1,24 @@
+.downcounter {
+    align-items: center;
+    background-color: var(--secondary-color);
+    border: 3px solid var(--primary-color);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0.5rem;
+}
+
+.downcounter_item {
+    color: var(--tertiary-color);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    width: 10vw;
+}
+
+.downcounter_item p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}

@@ -1,0 +1,10 @@
+.misa_title {
+    color: var(--secondary-color);
+}
+.misa_subtitle {
+    color: var(--primary-color);
+}
+
+.misa_section_btn {
+    margin-top: 2rem;
+}

@@ -1,0 +1,12 @@
+.fecha {
+    display: flex;
+    flex-direction: column;
+}
+
+.fecha_title {
+    color: var(--secondary-color);
+}
+
+.fecha_subtitle {
+    color: var(--primary-color);
+}

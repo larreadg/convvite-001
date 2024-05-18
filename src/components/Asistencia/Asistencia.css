@@ -1,0 +1,10 @@
+.asistencia_title {
+    color: var(--secondary-color);
+}
+.asistencia_subtitle {
+    color: var(--primary-color);
+}
+
+.asistencia_section_btn {
+    margin-top: 2rem;
+}

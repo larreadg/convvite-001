@@ -1,0 +1,7 @@
+.tenida {
+    background-color: var(--secondary-color);
+}
+
+.tenida_title, .tenida_subtitle {
+    color: var(--tertiary-color);
+}
