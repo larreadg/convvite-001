@@ -32,7 +32,7 @@ function App() {
       <Misa />
       <Fiesta />
       <Tenida />
-      <Asistencia jovenes={jsonData.j} adultos={jsonData.a}/>
+      <Asistencia jovenes={jsonData.j} adultos={jsonData.a} invitado={jsonData.i}/>
     </>
   )
 }

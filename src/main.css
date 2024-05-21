@@ -87,6 +87,7 @@
     border: none;
     background-color: var(--secondary-color);
     color: var(--tertiary-color);
+    cursor: pointer;
     display: flex;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5rem;
