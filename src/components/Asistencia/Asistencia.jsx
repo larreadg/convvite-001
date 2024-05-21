@@ -2,20 +2,22 @@ import { useEffect, useState } from 'react';
 import { MSG_ASISTENCIA_NO, MSG_ASISTENCIA_SI, URL_PLANILLA } from '../../constants';
 import PropTypes from 'prop-types';
 import './Asistencia.css';
+import Loader from '../shared/Loader/Loader';
 
 function Asistencia({ jovenes, adultos, invitado }) {
     
     const [confirmacion, setConfirmacion] = useState(0);
+    const [loading, setLoading] = useState(false);
 
-    // Actualizar el local storage cada vez que confirmacion cambie
     useEffect(() => {
         const fetchConfirmacion = async () => {
             try {
-                const response = await fetch(`${URL_PLANILLA}?query=select * from QnMC0JbaHZ4lV4Tk where Persona='${invitado}'`);
+                
+                const response = await fetch(`${URL_PLANILLA}?Persona=${invitado}`);
                 const result = await response.json();
                 const { data } = result
-                if(data && Array.isArray(data) && data.length === 1){
-                    setConfirmacion(data[0].Asistencia === 'Sí, asistiré' ? 1 : 2);
+                if(data){
+                    setConfirmacion(data.Asistencia === 'Sí, asistiré' ? 1 : 2);
                 }
             } catch (error) {
                 console.error('Hubo un problema al obtener la confirmación: ' + error.message);
@@ -30,17 +32,16 @@ function Asistencia({ jovenes, adultos, invitado }) {
         const confirmed = window.confirm(msg);
         if (confirmed) {
             try {
+                setLoading(true);
+                const body = new FormData()
+                body.append('Persona', invitado)
+                body.append('Asistencia', respuesta === 'SI' ? 'Sí, asistiré' : 'No asistiré')
+                body.append('Jovenes', jovenes)
+                body.append('Adultos', adultos)
+
                 const response = await fetch(URL_PLANILLA, {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ 
-                        Persona : invitado,
-                        Asistencia : respuesta === 'SI' ? 'Sí, asistiré' : 'No asistiré',
-                        Jovenes : jovenes,
-                        Adultos : adultos
-                     }),
+                    body,
                 });
 
                 if (!response.ok) {
@@ -49,11 +50,13 @@ function Asistencia({ jovenes, adultos, invitado }) {
 
                 setConfirmacion(respuesta === 'SI' ? 1 : 2);
 
+                setLoading(false);
+
             } catch (error) {
                 alert('Hubo un problema al enviar la confirmación: ' + error.message);
             }
         }
-    };
+    };    
 
     if (confirmacion === 1) {
         return (
@@ -75,6 +78,7 @@ function Asistencia({ jovenes, adultos, invitado }) {
 
     return (
         <div className='section_padding'>
+            {loading && <Loader />}
             <h1 className='header_emojis'>✔️👌</h1>
             <h1 className='asistencia_title section_title'>Asistencia</h1>
             {jovenes > 0 && (
