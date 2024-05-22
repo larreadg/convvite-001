@@ -8,6 +8,7 @@ function Tenida() {
         <h1 className='tenida_title section_title'>Vestimenta</h1>
         <h1 className='tenida_subtitle section_subtitle '>Elegante</h1>
         <img className='tenida_el2_top_left' src={el2} alt="tenida_el2_top_left" />
+        <img className='tenida_el2_top_right' src={el2} alt="tenida_el2_top_right" />
     </div>
   );
 }

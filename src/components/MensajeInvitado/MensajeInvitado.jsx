@@ -1,4 +1,5 @@
 import './MensajeInvitado.css';
+import el2 from '../../assets/img/el_2.png';
 import PropTypes from 'prop-types';
 
 function MensajeInvitado({ invitado }) {
@@ -14,6 +15,8 @@ function MensajeInvitado({ invitado }) {
             Y tornaron aquellos instantes de tristeza en alegrías... <br />
             Deseo que compartas conmigo la mágica noche de Mis 15 años.
         </h1>
+        <img className='mensaje_invitado_el2_top_left' src={el2} alt="mensaje_invitado_el2_top_left" />
+        <img className='mensaje_invitado_el2_top_right' src={el2} alt="mensaje_invitado_el2_top_right" />
     </div>
   );
 }

@@ -1,7 +1,28 @@
 .mensaje_invitado {
     background-color: var(--secondary-color);
+    position: relative;
+    z-index: 2;
 }
 
 .mensaje_invitado_title, .mensaje_invitado_subtitle {
     color: var(--tertiary-color);
+}
+
+.mensaje_invitado_el2_top_left {
+    left: 1rem;
+    height: auto;
+    position: absolute;
+    top: 2rem;
+    width: 64px;
+    animation: pulsateLeft 2s infinite;
+}
+
+.mensaje_invitado_el2_top_right {
+    right: 1rem;
+    height: auto;
+    position: absolute;
+    transform: scaleX(-1);
+    top: 2rem;
+    width: 64px;
+    animation: pulsateRight 2s infinite;
 }

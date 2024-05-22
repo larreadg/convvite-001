@@ -15,3 +15,13 @@
     width: 64px;
     animation: pulsateLeft 2s infinite;
 }
+
+.tenida_el2_top_right {
+    right: 1rem;
+    height: auto;
+    position: absolute;
+    transform: scaleX(-1);
+    top: 2rem;
+    width: 64px;
+    animation: pulsateRight 2s infinite;
+}
