@@ -1,9 +1,23 @@
-import { redirectToGoogleMaps } from '../../utils';
-import './Fiesta.css';
+import { useEffect, useRef } from 'react'
+import { elementObserver, redirectToGoogleMaps } from '../../utils'
+import bgImage from '../../assets/img/bg2.png'
+import './Fiesta.css'
 
 function Fiesta() {
+
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const currentRef = ref.current
+    const observer = elementObserver(['fiesta_animate'])
+    observer.observe(ref.current)
+    return () => {
+      currentRef.current && observer.unobserve(currentRef.current)
+    }
+  })
+
   return (
-    <div className='fiesta section_padding'>
+    <section className='fiesta section_padding' ref={ref} style={{ backgroundImage: `url(${bgImage})` }}>
         <h1 className='header_emojis'>🥳🎉</h1>
         <h1 className='fiesta_title section_title'>Fiesta</h1>
         <h1 className='fiesta_subtitle section_subtitle '>Sábado 01 de Junio, 20:00 hs. en el Salón Imperial Hotel Corona Suites</h1>
@@ -11,8 +25,8 @@ function Fiesta() {
             <span className='icon'>📍</span>
             <p>Ver ubicación</p>
         </a>
-    </div>
-  );
+    </section>
+  )
 }
 
-export default Fiesta;
+export default Fiesta

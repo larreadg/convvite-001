@@ -3,9 +3,9 @@ import Fiesta from './components/Fiesta/Fiesta';
 import MensajeInvitado from './components/MensajeInvitado/MensajeInvitado'
 import Misa from './components/Misa/Misa';
 import Portada from './components/Portada/Portada'
-import { useLocation } from 'react-router-dom';
 import Tenida from './components/Tenida/Tenida';
 import Asistencia from './components/Asistencia/Asistencia';
+import { useLocation } from 'react-router-dom';
 
 function App() {
 
@@ -32,7 +32,7 @@ function App() {
       <Misa />
       <Fiesta />
       <Tenida />
-      <Asistencia jovenes={jsonData.j} adultos={jsonData.a} invitado={jsonData.i}/>
+      <Asistencia jovenes={jsonData.j} adultos={jsonData.a} invitado={jsonData.i} />
     </>
   )
 }

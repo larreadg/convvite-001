@@ -1,6 +1,13 @@
 .tenida {
-    position: relative;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: var(--secondary-color);
+    height: 100vh;
+    position: relative;
+    z-index: 2;
 }
 
 .tenida_title, .tenida_subtitle {
@@ -20,8 +27,46 @@
     right: 1rem;
     height: auto;
     position: absolute;
-    transform: scaleX(-1);
     top: 2rem;
     width: 64px;
     animation: pulsateRight 2s infinite;
+}
+
+.tenida_el2_bottom_left {
+    left: 1rem;
+    height: auto;
+    position: absolute;
+    bottom: 2rem;
+    width: 64px;
+}
+
+.tenida_el2_bottom_right {
+    right: 1rem;
+    height: auto;
+    position: absolute;
+    bottom: 2rem;
+    width: 64px;
+}
+
+
+/* Animaciones */
+
+.tenida_animate .header_emojis {
+    animation: bounceIn 2s forwards;
+}
+
+.tenida_animate .tenida_title {
+    animation: bounceIn 2s forwards;
+}
+
+.tenida_animate .section_subtitle {
+    animation: fadeIn 3s forwards;
+}
+
+.tenida_animate .tenida_el2_top_left, .tenida_animate .tenida_el2_bottom_left {
+    animation: fadeIn 2s forwards, pulse 2s 2s infinite;
+}
+
+.tenida_animate .tenida_el2_top_right, .tenida_animate .tenida_el2_bottom_right {
+    animation: fadeIn 2s forwards, pulse 2s 2s infinite;
 }

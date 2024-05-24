@@ -1,3 +1,12 @@
+.fiesta {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .fiesta_title {
     color: var(--secondary-color);
 }
@@ -7,4 +16,22 @@
 
 .fiesta_section_btn {
     margin-top: 2rem;
+}
+
+/* Animaciones */
+
+.fiesta_animate .header_emojis {
+    animation: bounceIn 2s forwards;
+}
+
+.fiesta_animate .fiesta_title {
+    animation: bounceIn 2s forwards;
+}
+
+.fiesta_animate .fiesta_subtitle {
+    animation: fadeInLeft 2s forwards;
+}
+
+.fiesta_animate .fiesta_section_btn {
+    animation: fadeIn 2s forwards;
 }

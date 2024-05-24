@@ -1,15 +1,24 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { MSG_ASISTENCIA_NO, MSG_ASISTENCIA_SI, URL_PLANILLA } from '../../constants';
+import { elementObserver } from '../../utils';
 import PropTypes from 'prop-types';
-import './Asistencia.css';
 import Loader from '../shared/Loader/Loader';
+import bgImage from '../../assets/img/bg2.png'
+import './Asistencia.css';
 
 function Asistencia({ jovenes, adultos, invitado }) {
     
     const [confirmacion, setConfirmacion] = useState(0);
     const [loading, setLoading] = useState(false);
 
+    const ref = useRef(null)
+
     useEffect(() => {
+
+        const currentRef = ref.current
+        const observer = elementObserver(['asistencia_animate'])
+        observer.observe(ref.current)
+    
         const fetchConfirmacion = async () => {
             try {
                 
@@ -24,6 +33,11 @@ function Asistencia({ jovenes, adultos, invitado }) {
             }
         };
         fetchConfirmacion();
+
+        return () => {
+            currentRef.current && observer.unobserve(currentRef.current)
+        }
+
     }, [invitado]);
 
 
@@ -60,7 +74,7 @@ function Asistencia({ jovenes, adultos, invitado }) {
 
     if (confirmacion === 1) {
         return (
-            <section className='section_padding'>
+            <section className='asistencia section_padding' ref={ref} style={{ backgroundImage: `url(${bgImage})` }}>
                 <h1 className='header_emojis'>😁✌️</h1>
                 <h1 className='asistencia_title section_title'>Asistencia</h1>
                 <h1 className='asistencia_subtitle section_subtitle '>Confirmada</h1>
@@ -68,35 +82,38 @@ function Asistencia({ jovenes, adultos, invitado }) {
         );
     } else if (confirmacion === 2) {
         return (
-            <section className='section_padding'>
+            <section className='asistencia section_padding' ref={ref} style={{ backgroundImage: `url(${bgImage})` }}>
                 <h1 className='header_emojis'>😿👍</h1>
                 <h1 className='asistencia_title section_title'>Asistencia</h1>
                 <h1 className='asistencia_subtitle section_subtitle '>Has indicado que no podrás asistir</h1>
             </section>
         );
+    } else {
+
+        return (
+            <div className='asistencia section_padding' ref={ref} style={{ backgroundImage: `url(${bgImage})` }}>
+                {loading && <Loader />}
+                <h1 className='header_emojis'>✔️👌</h1>
+                <h1 className='asistencia_title section_title'>Asistencia</h1>
+                {jovenes > 0 && (
+                    <h1 className='asistencia_subtitle section_subtitle '>{jovenes} jóven(es)</h1>
+                )}
+                {adultos > 0 && (
+                    <h1 className='asistencia_subtitle section_subtitle '>{adultos} adulto(s)</h1>
+                )}
+                <a className='asistencia_section_btn section_btn' onClick={() => handleAsistenciaClick('SI')}>
+                    <span className='icon'>✔️</span>
+                    <p>Sí, asistiré</p>
+                </a>
+                <a className='asistencia_section_btn section_btn section_btn_secondary' onClick={() => handleAsistenciaClick('NO')}>
+                    <span className='icon'>❌</span>
+                    <p>No podré asistir</p>
+                </a>
+            </div>
+        );
+        
     }
 
-    return (
-        <div className='section_padding'>
-            {loading && <Loader />}
-            <h1 className='header_emojis'>✔️👌</h1>
-            <h1 className='asistencia_title section_title'>Asistencia</h1>
-            {jovenes > 0 && (
-                <h1 className='asistencia_subtitle section_subtitle '>{jovenes} jóven(es)</h1>
-            )}
-            {adultos > 0 && (
-                <h1 className='asistencia_subtitle section_subtitle '>{adultos} adulto(s)</h1>
-            )}
-            <a className='asistencia_section_btn section_btn' onClick={() => handleAsistenciaClick('SI')}>
-                <span className='icon'>✔️</span>
-                <p>Sí, asistiré</p>
-            </a>
-            <a className='asistencia_section_btn section_btn section_btn_secondary' onClick={() => handleAsistenciaClick('NO')}>
-                <span className='icon'>❌</span>
-                <p>No podré asistir</p>
-            </a>
-        </div>
-    );
 }
 
 Asistencia.propTypes = {

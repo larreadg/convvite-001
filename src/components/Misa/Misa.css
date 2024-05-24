@@ -1,3 +1,12 @@
+.misa {
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .misa_title {
     color: var(--secondary-color);
 }
@@ -7,4 +16,22 @@
 
 .misa_section_btn {
     margin-top: 2rem;
+}
+
+/* Animaciones */
+
+.misa_animate .header_emojis {
+    animation: bounceIn 2s forwards;
+}
+
+.misa_animate .misa_title {
+    animation: bounceIn 2s forwards;
+}
+
+.misa_animate .misa_subtitle {
+    animation: fadeInLeft 2s forwards;
+}
+
+.misa_animate .misa_section_btn {
+    animation: fadeIn 2s forwards;
 }

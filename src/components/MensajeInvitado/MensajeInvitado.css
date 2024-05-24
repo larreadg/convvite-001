@@ -1,5 +1,11 @@
 .mensaje_invitado {
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: var(--secondary-color);
+    height: 100vh;
     position: relative;
     z-index: 2;
 }
@@ -14,15 +20,52 @@
     position: absolute;
     top: 2rem;
     width: 64px;
-    animation: pulsateLeft 2s infinite;
+    animation: pulse 2s infinite;
 }
 
 .mensaje_invitado_el2_top_right {
     right: 1rem;
     height: auto;
     position: absolute;
-    transform: scaleX(-1);
     top: 2rem;
     width: 64px;
-    animation: pulsateRight 2s infinite;
+    animation: pulse 2s infinite;
+}
+
+.mensaje_invitado_el2_bottom_left {
+    left: 1rem;
+    height: auto;
+    position: absolute;
+    bottom: 2rem;
+    width: 64px;
+}
+
+.mensaje_invitado_el2_bottom_right {
+    right: 1rem;
+    height: auto;
+    position: absolute;
+    bottom: 2rem;
+    width: 64px;
+}
+
+/* Animaciones */
+
+.mensaje_invitado_animate .mensaje_invitado_subtitle {
+    animation: fadeIn 3s forwards;
+}
+
+.mensaje_invitado_animate .header_emojis {
+    animation: bounceIn 2s forwards;
+}
+
+.mensaje_invitado_animate .invitado_title {
+    animation: bounceIn 2s forwards;
+}
+
+.mensaje_invitado_animate .mensaje_invitado_el2_top_left, .mensaje_invitado_animate .mensaje_invitado_el2_bottom_left {
+    animation: fadeIn 2s forwards, pulse 2s 2s infinite;
+}
+
+.mensaje_invitado_animate .mensaje_invitado_el2_top_right, .mensaje_invitado_animate .mensaje_invitado_el2_bottom_right {
+    animation: fadeIn 2s forwards, pulse 2s 2s infinite;
 }

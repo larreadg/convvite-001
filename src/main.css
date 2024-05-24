@@ -4,6 +4,22 @@
     --tertiary-color: #fff;
 }
 
+@keyframes customSwing {
+    0% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    100% { transform: rotate(0deg); }
+}
+
+@keyframes customFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 0.75; }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 @font-face {
     font-family: 'Dancing Script';
     src: url('./assets/fonts/DancingScript-Regular.ttf') format('truetype');
@@ -19,43 +35,6 @@
     margin : 0;
 }
 
-@keyframes swing {
-    0% { transform: rotate(-15deg); }
-    50% { transform: rotate(15deg); }
-    100% { transform: rotate(0deg); }
-}
-
-@keyframes pulsateRight {
-    0% { transform: scaleX(-1); opacity: 1; }
-    50% { transform: scaleX(-1.2); opacity: 0.7; }
-    100% { transform: scaleX(-1); opacity: 1; }
-}
-
-@keyframes pulsateLeft {
-    0% { transform: scaleX(1); opacity: 1; }
-    50% { transform: scaleX(1.2); opacity: 0.7; }
-    100% { transform: scaleX(1); opacity: 1; }
-}
-
-@keyframes encender {
-    0% { opacity: 0; }
-    100% { opacity: 0.75; }
-}
-
-@keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 .header_emojis {
     font-size: 2rem;
     margin-bottom: 1rem;
@@ -63,7 +42,7 @@
 }
 
 .section_padding {
-    padding: 2rem 1rem;
+    padding: 2rem;
 }
 
 .section_title {
@@ -107,4 +86,13 @@
 
 .section_btn_secondary {
     background-color: var(--primary-color);
+}
+
+html {
+    scroll-snap-type: y mandatory;
+}
+
+.portada, .fecha, .mensaje_invitado, .misa, .fiesta, .tenida, .asistencia {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }

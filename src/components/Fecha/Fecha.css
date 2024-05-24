@@ -1,6 +1,11 @@
 .fecha {
+    background-position: center;
+    background-size: cover;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 .fecha_title {
@@ -9,4 +14,26 @@
 
 .fecha_subtitle {
     color: var(--primary-color);
+}
+
+/* Animations */
+
+.fecha_animate .downcounter_container {
+    animation: flipInX 2s forwards;
+}
+
+.fecha_animate .fecha_ciudad {
+    animation: fadeInLeft 2s forwards;
+}
+
+.fecha_animate .fecha_fecha {
+    animation: fadeInRight 2s forwards;
+}
+
+.fecha_animate .header_emojis {
+    animation: bounceIn 2s forwards;
+}
+
+.fecha_animate .fecha_title {
+    animation: bounceIn 2s forwards;
 }
